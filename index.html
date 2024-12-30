@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UD ZULFADRI</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: black;
+            color: white;
+            overflow: hidden;
+        }
+
+        .video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+
+        .logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .logo img {
+            width: 120px;
+            margin-bottom: 15px;
+        }
+
+        .logo h1 {
+            font-size: 3ch;
+            color: white;
+            text-transform: uppercase;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid red;
+            animation: typing 8s steps(20, end) infinite, blink 1s step-end infinite;
+        }
+
+        @keyframes typing {
+            0%, 100% { width: 0; }
+            50% { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        .logo p {
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .whatsapp-btn {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid green;
+            color: green;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1em;
+            text-decoration: none;
+            box-shadow: 0 0 15px green;
+            transition: all 0.5s;
+        }
+
+        .whatsapp-btn:hover {
+            background: green;
+            color: white;
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        .whatsapp-btn:active {
+            box-shadow: 0 0 30px white;
+        }
+
+        .play-btn {
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <video class="video-bg" id="bgVideo" autoplay loop>
+        <source src="Untitled video (1).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="logo">
+        <img src="https://1.bp.blogspot.com/-TUXVyeYL6U8/XYIrgFbcyQI/AAAAAAAAAf4/KBb6blX5G5Q4_kAjFPHxO2_xNgeWefklgCLcBGAsYHQ/s1600/Logo%2BSRC%2BVector%2BCDR%2Bdan%2BPNG.png" alt="Logo">
+        <h1>TOKO UD ZULFADRI</h1>
+        <p>Koto Baru, Bayang, Pessel</p>
+        <p>P&D Grosir dan Eceran</p>
+    </div>
+
+    <a href="https://wa.link/19m638" target="_blank" class="whatsapp-btn">WhatsApp</a>
+    <button class="play-btn" id="playBtn">Play Video</button>
+
+    <script>
+        const video = document.getElementById('bgVideo');
+        const playBtn = document.getElementById('playBtn');
+
+        // Pastikan suara tidak dimatikan
+        video.muted = false;
+
+        // Coba memulai video dengan suara
+        video.play().catch((error) => {
+            console.log("Autoplay dengan suara tidak diizinkan oleh browser:", error);
+            // Tampilkan tombol play jika autoplay gagal
+            playBtn.style.display = 'block';
+        });
+
+        // Event listener untuk tombol play
+        playBtn.addEventListener('click', () => {
+            video.play();
+            playBtn.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
